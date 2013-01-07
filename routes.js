@@ -1,7 +1,6 @@
 function set_routes(app){
   app.get("/", function(req, res){
-    res.write("oh hey");
-    res.end();
+    res.render('index.jade', { string: "oh hey there!" });
   });
 }
 
