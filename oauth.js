@@ -60,15 +60,6 @@ Session.prototype.prompt_for_auth = function(res){
 }
 
 Session.prototype.add_video = function(vid_id, callback){
-/*
- POST /feeds/api/playlists/PLAYLIST_ID HTTP/1.1
-Host: gdata.youtube.com
-Content-Type: application/atom+xml
-Content-Length: CONTENT_LENGTH
-Authorization: Bearer ACCESS_TOKEN
-GData-Version: 2
-X-GData-Key: key=DEVELOPER_KEY
-*/
   data = '<?xml version="1.0" encoding="UTF-8"?>' +
          '<entry xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://gdata.youtube.com/schemas/2007">'+
          '<id>'+vid_id+'</id>'+
