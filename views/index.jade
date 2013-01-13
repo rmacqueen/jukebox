@@ -1,2 +1,16 @@
 html
-  p #{string}
+  if selected_playlist == undefined
+    a(href='/setup') gotta set a playlist dawg
+  else
+    form(method='link', action='/')
+      input(name='q')
+      button(type='submit') SEARCH!
+    if results !== undefined
+      table
+      each vid in results
+        //tr
+        // img(src='#{vid.thumbnail_url}')
+        tr
+          td
+            p
+              a(href='/add?id=#{vid.id}') #{vid.title}: #{vid.duration}

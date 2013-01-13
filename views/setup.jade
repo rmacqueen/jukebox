@@ -1,0 +1,10 @@
+html
+  h1 Choose dat playlist!
+  each playlist in playlists
+    li
+      a(href='?id=#{playlist["yt$playlistId"]["$t"]}')
+        if selected_playlist == playlist["yt$playlistId"]["$t"]
+          u #{playlist.title["$t"]} (selected)
+        else
+          u #{playlist.title["$t"]}
+  a(href='/') back
