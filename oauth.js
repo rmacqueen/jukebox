@@ -2,18 +2,17 @@ var events = require('events');
 var http = require('http');
 var https = require('https');
 var querystring = require('querystring');
-var acct_info = require('./account');
 
 module.exports.Session = Session;
 
 function Session(){
-  this.client_id = acct_info.client_id;
-  this.client_secret = acct_info.client_secret;
-  this.redirect_uri = acct_info.redirect_uri;
-  this.developer_key = acct_info.developer_key;
-  this.scope = acct_info.scope;
-  this.response_type = acct_info.response_type;
-  this.access_type = acct_info.access_type;
+  this.client_id = "547724229363.apps.googleusercontent.com";
+  this.client_secret = "JF0R03TVdwrfbVFmBknC1sbF";
+  this.redirect_uri = "http://localhost:8888/oauth2callback";
+  this.developer_key = "AI39si5GEUJoqg9uucGkENRgGqPv1HSb3VYwGafMUmnR0ufblBT7i_vAgWAU41WyHsQXbBsRCzk8efhHwCARv-UXefPLO0iO-w"
+  this.scope = "https://gdata.youtube.com";
+  this.response_type = "code";
+  this.access_type = "offline";
   this.oauth_url = "https://accounts.google.com/o/oauth2/auth?" +
               "&client_id=" + this.client_id +
               "&redirect_uri=" + this.redirect_uri +
@@ -60,6 +59,15 @@ Session.prototype.prompt_for_auth = function(res){
 }
 
 Session.prototype.add_video = function(vid_id, callback){
+/*
+ POST /feeds/api/playlists/PLAYLIST_ID HTTP/1.1
+Host: gdata.youtube.com
+Content-Type: application/atom+xml
+Content-Length: CONTENT_LENGTH
+Authorization: Bearer ACCESS_TOKEN
+GData-Version: 2
+X-GData-Key: key=DEVELOPER_KEY
+*/
   data = '<?xml version="1.0" encoding="UTF-8"?>' +
          '<entry xmlns="http://www.w3.org/2005/Atom" xmlns:yt="http://gdata.youtube.com/schemas/2007">'+
          '<id>'+vid_id+'</id>'+
